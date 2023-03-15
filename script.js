@@ -14,8 +14,10 @@ function showLoadingAnimation() {
     document.body.appendChild(loading);
 
     setTimeout(() => {
-	scrambleText(elements, initialText, 1000);
         loading.remove();
+		scrambleText(elements, initialText, 140, function () {
+			console.log("Scramble animation completed");
+		});
     }, 1000);
 }
 
@@ -57,23 +59,68 @@ inputField.addEventListener('keydown', (e) => {
 	}
 });
 
-const scrambleText = (elements, initialText, duration) => {
-    const scramble = () => {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let randomText = '';
-        for (let i = 0; i < initialText.length; i++) {
-            randomText += characters.charAt(Math.floor(Math.random() * characters.length));
-        }
-        elements.forEach(el => el.textContent = randomText);
-    };
+function scrambleText(targetElement, originalText, duration, callback) {
+  let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  let currentScramble = "";
+  let currentLetterIndex = 0;
+  let nextLetterIndex = 0;
+  let scrambleStartTime;
 
-    const scrambleInterval = setInterval(scramble, 100);
+    function randomChar() {
+		return chars[Math.floor(Math.random() * chars.length)];
+	}
 
-    setTimeout(() => {
-        clearInterval(scrambleInterval);
-        elements.forEach(el => el.textContent = initialText);
-    }, duration);
-};
+	function scramble() {
+	  if (nextLetterIndex < originalText.length) {
+		if (originalText[nextLetterIndex] === " ") {
+		  currentScramble += " ";
+		  nextLetterIndex++;
+		  scramble();
+		} else {
+		  let elapsedTime = Date.now() - scrambleStartTime;
+		  if (elapsedTime < duration) {
+			// Scramble the current character and the remaining characters
+			let scrambledRemainder = originalText.slice(currentLetterIndex + 1).split('').map(char => {
+			  return char === ' ' ? ' ' : randomChar();
+			}).join('');
+
+			if (originalText[currentLetterIndex] === ' ') {
+			  currentScramble = originalText.slice(0, currentLetterIndex) + ' ' + scrambledRemainder;
+			} else {
+			  currentScramble = originalText.slice(0, currentLetterIndex) + randomChar() + scrambledRemainder;
+			}
+			targetElement.forEach(el => el.textContent = currentScramble);
+			setTimeout(scramble, 70); // Slow down the swapping of random characters
+		  } else {
+			currentScramble = originalText.slice(0, currentLetterIndex + 1) + originalText.slice(currentLetterIndex + 1).replace(/[^ ]/g, randomChar());
+
+			targetElement.forEach(el => el.textContent = currentScramble);
+			currentLetterIndex++;
+			nextLetterIndex++;
+			scrambleStartTime = Date.now();
+			if (nextLetterIndex < originalText.length) {
+			  requestAnimationFrame(scramble);
+			} else {
+			  if (nextLetterIndex === originalText.length && originalText[currentLetterIndex] !== ' ') {
+				currentScramble = originalText.slice(0, currentLetterIndex) + randomChar();
+				targetElement.forEach(el => el.textContent = currentScramble);
+				setTimeout(() => {
+				  currentScramble = originalText;
+				  targetElement.forEach(el => el.textContent = currentScramble);
+				  callback();
+				}, 70);
+			  } else {
+				callback();
+			  }
+			}
+		  }
+		}
+	  }
+	}
+  scrambleStartTime = Date.now();
+  requestAnimationFrame(scramble);
+}
+
 
 const asciiName = document.querySelector('.ascii-name');
 const glitchElements = document.querySelectorAll('.ascii-name-glitch');
