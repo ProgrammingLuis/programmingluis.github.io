@@ -23,7 +23,7 @@ body {
 .terminal-header {
     color: #0f0;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.75rem;
     border-bottom: 1px solid #555;
     padding-bottom: 0.5rem;
 }
@@ -33,7 +33,7 @@ body {
 	align-items: center;
 	flex-direction: column;
     justify-content: space-evenly;
-    padding: 1rem 0;
+ 
 }
 
 .image-placeholder {
@@ -52,7 +52,7 @@ body {
 .instructions {
     color: #0f0;
     font-size: 1.5rem;
-    margin-bottom: 3rem; /* Update this value */
+    margin-bottom: 1rem; /* Update this value */
 }
 
 .terminal-input {
