@@ -48,7 +48,7 @@ inputField.addEventListener('keydown', (e) => {
                 window.location.href = 'social.html';
                 break;
 			case '0':
-			case 'Main':
+			case 'main':
                 window.location.href = 'index.html';
                 break;
             default:
