@@ -1,6 +1,11 @@
-if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+function onLoad() {
+  if (!sessionStorage.getItem("hasLoadedOnce") || (performance.navigation.type === performance.navigation.TYPE_RELOAD)) {
     showLoadingAnimation();
+    sessionStorage.setItem("hasLoadedOnce", "true");
+  }
 }
+
+window.addEventListener("load", onLoad);
 
 function showLoadingAnimation() {
     const loading = document.createElement('div');
