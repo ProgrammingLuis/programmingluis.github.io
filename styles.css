@@ -8,15 +8,48 @@ body {
     height: 100vh;
 }
 
-.terminal {
-    background-color: #1e1e1e;
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
     width: 95%;
+	height: 92%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Add some padding around the terminal */
+}
+
+.terminal {
+	overflow: auto;
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+	position: relative;
+    background-color: #1e1e1e;
+    width: 100%;
+	height: 100%;
     max-width: 1500px;
     padding: 1rem;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     min-height: 90vh;
     border: 2px solid #0f0; /* Add this line */
+}
+
+/* Style for smaller screens */
+@media (max-width: 800px) {
+    .wrapper {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .terminal {
+        margin: 0;
+        max-width: 100%;
+    }
 }
 
 
@@ -33,7 +66,7 @@ body {
 	align-items: center;
 	flex-direction: column;
     justify-content: space-evenly;
- 
+	flex-grow: 1;
 }
 
 .image-placeholder {
