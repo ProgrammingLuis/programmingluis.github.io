@@ -39,19 +39,6 @@ body, html {
     border: 2px solid #0f0; /* Add this line */
 }
 
-/* Style for smaller screens */
-@media (max-width: 800px) {
-    .wrapper {
-        align-items: flex-start;
-        justify-content: flex-start;
-    }
-
-    .terminal {
-        margin: 0;
-        max-width: 100%;
-    }
-}
-
 
 .terminal-header {
     color: #0f0;
@@ -80,6 +67,23 @@ body, html {
     color: #0f0;
     font-size: 3.5rem;
     margin-left: 0rem;
+}
+
+/* Style for smaller screens */
+@media (max-width: 800px) {
+    .wrapper {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .terminal {
+        margin: 0;
+        max-width: 100%;
+    }
+	
+	.ascii-name {
+		font-size: 1.25rem;
+	}
 }
 
 .instructions {
@@ -189,6 +193,7 @@ ul.terminal-list li {
     padding-left: 1em;
 	font-size: 1.25rem;
     color: #0f0; /* same color as the terminal text */
+	word-break: break-word;
 }
 
 ul.terminal-list li:before {
@@ -204,3 +209,11 @@ ul.terminal-list li:before {
 	position: left;
 }
 
+pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}

@@ -1,11 +1,22 @@
 function onLoad() {
+	
+	scrollToTopLeft();
+	
   if (!sessionStorage.getItem("hasLoadedOnce") || (performance.navigation.type === performance.navigation.TYPE_RELOAD)) {
+	const asciiName = document.querySelector('.ascii-name');
+	const glitchElements = document.querySelectorAll('.ascii-name-glitch');
+	const elements = [asciiName, ...glitchElements];
+	const initialText = asciiName.getAttribute('data-text');
     showLoadingAnimation();
     sessionStorage.setItem("hasLoadedOnce", "true");
   }
 }
 
 window.addEventListener("load", onLoad);
+
+window.onload = function() {
+    scrollToTopLeft();
+};
 
 function showLoadingAnimation() {
     const loading = document.createElement('div');
@@ -21,6 +32,15 @@ function showLoadingAnimation() {
     }, 1000);
 }
 
+function scrollToTopLeft() {
+	setTimeout(() => {
+        const terminal = document.querySelector('.terminal');
+		terminal.scrollTop = 0;
+		terminal.scrollLeft = 0;
+    }, 10); 
+	window.scrollTo(0, 0);
+}
+
 const inputField = document.querySelector('.input-field');
 
 inputField.addEventListener('keydown', (e) => {
@@ -32,26 +52,32 @@ inputField.addEventListener('keydown', (e) => {
             case '1':
             case 'about me':
                 window.location.href = 'about.html';
+				scrollToTopLeft();
                 break;
             case '2':
             case 'education':
                 window.location.href = 'education.html';
+				scrollToTopLeft();
                 break;
             case '3':
             case 'experience':
                 window.location.href = 'experience.html';
+				scrollToTopLeft();
                 break;
             case '4':
             case 'projects':
                 window.location.href = 'projects.html';
+				scrollToTopLeft();
                 break;
             case '5':
             case 'socials':
                 window.location.href = 'social.html';
+				scrollToTopLeft();
                 break;
 			case '0':
 			case 'main':
                 window.location.href = 'index.html';
+				scrollToTopLeft();
                 break;
             default:
                 alert('Invalid command. Please enter a valid option.');
@@ -120,12 +146,6 @@ function scrambleText(targetElement, originalText, duration, callback) {
   scrambleStartTime = Date.now();
   requestAnimationFrame(scramble);
 }
-
-
-const asciiName = document.querySelector('.ascii-name');
-const glitchElements = document.querySelectorAll('.ascii-name-glitch');
-const elements = [asciiName, ...glitchElements];
-const initialText = asciiName.getAttribute('data-text');
 
 function focusTerminalInput() {
     const terminalInput = document.querySelector('.input-field');
