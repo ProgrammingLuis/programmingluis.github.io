@@ -14,8 +14,8 @@ function showLoadingAnimation() {
     document.body.appendChild(loading);
 
     setTimeout(() => {
+	scrambleText(elements, initialText, 1000);
         loading.remove();
-		scrambleText(elements, initialText, 1000);
     }, 1000);
 }
 
