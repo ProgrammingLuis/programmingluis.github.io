@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body onclick="focusTerminalInput();">
+    <div class="terminal">
+        <div class="terminal-header">Projects</div>
+        <div class="terminal-content">
+			<pre><p class="hacker-text">Superscalar Out-of-Order Processor		Winter 2023</p></pre>
+			<p class="hacker-text">I made an N-way superscalar OoO processor based on MIPS R10K architecture. It also supported early branch resolution to improve processor performance and was implemented in SystemVerilog. I learned a lot about synthesizing hardware, creating testbenches, and verifying the correctness of the hardware.</p>
+			<p></p>
+			<pre><p class="hacker-text">Self-Driving Robot		Fall 2019</p></pre>
+			<p class="hacker-text">I made a self-driving robot using an FPGA board. The robot used sensors and motors to move and its goal was to drive around indefinitely as long as its path wasn’t obstructed. This was done in Verilog and I learned how to use wave simulation test benches during this project. </p>
+		</div>
+        <div class="instructions">
+            <p>Type "0" or "Main" to return.</p>
+        </div>
+        <div class="terminal-input">
+            <span class="user-input">root@hiluis.com:~$</span>
+            <input type="text" class="input-field" autofocus />
+        </div>
+    </div>
+</body>
+</html>

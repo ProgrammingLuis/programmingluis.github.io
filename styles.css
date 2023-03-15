@@ -1,0 +1,173 @@
+body {
+    background-color: #000;
+    font-family: monospace;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.terminal {
+    background-color: #1e1e1e;
+    width: 95%;
+    max-width: 1500px;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    min-height: 90vh;
+    border: 2px solid #0f0; /* Add this line */
+}
+
+
+.terminal-header {
+    color: #0f0;
+    font-weight: bold;
+    font-size: 2rem;
+    border-bottom: 1px solid #555;
+    padding-bottom: 0.5rem;
+}
+
+.terminal-content {
+    display: flex;
+	align-items: center;
+	flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1rem 0;
+}
+
+.image-placeholder {
+    width: 250px;
+    height: 250px;
+    border: 2px solid #0f0;
+    margin-right: 2rem;
+}
+
+.ascii-name {
+    color: #0f0;
+    font-size: 3.5rem;
+    margin-left: 0rem;
+}
+
+.instructions {
+    color: #0f0;
+    font-size: 1.5rem;
+    margin-bottom: 3rem; /* Update this value */
+}
+
+.terminal-input {
+    color: #0f0;
+    display: flex;
+    align-items: center;
+    position: relative;
+	bottom: 0;
+}
+
+.user-input {
+    font-size: 1.5rem;
+}
+
+.input-field {
+    background-color: transparent;
+    border: none;
+    color: #0f0;
+    outline: none;
+    flex-grow: 1;
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading-screen h1 {
+    color: #0f0;
+    font-size: 3rem;
+    font-family: monospace;
+}
+
+.hacker-text {
+    color: #0f0;
+    font-size: 1.5rem;
+    line-height: 1.6;
+	margin-left: 3rem;
+	margin-right: 3rem;
+}
+
+.ascii-name-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.ascii-name-glitch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #0f0;
+    opacity: 0.3;
+    text-shadow: 0 0 10px #0f0;
+}
+
+.ascii-name, .ascii-name-glitch {
+    font-size: 5.5rem;
+    font-family: monospace;
+    white-space: pre-wrap;
+    line-height: 1.2;
+}
+
+.socials-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-link {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-icon {
+    width: 200px;
+    height: 200px;
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+ul.terminal-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.terminal-list li {
+    position: relative;
+    padding-left: 1em;
+	font-size: 1.25rem;
+    color: #0f0; /* same color as the terminal text */
+}
+
+ul.terminal-list li:before {
+    content: "•";
+    position: relative;
+    left: 0;
+    transform: translateX(-100%);
+    color: #0f0; /* same color as the terminal text */
+    font-weight: bold;
+	font-size: 1.25rem;
+	margin-left: 3rem;
+	margin-right: 1rem;
+	position: left;
+}
+
